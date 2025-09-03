@@ -1,0 +1,5 @@
+{
+    "title": "Olá {{ name }} !",
+    "switch": "Trocar para inglês",
+    "lang": "Idioma atual: {{ lng }}"
+}

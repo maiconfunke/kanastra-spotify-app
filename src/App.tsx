@@ -2,15 +2,23 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useTranslation } from 'react-i18next'
+import { Suspense } from 'react'
 
 function App() {
   const [count, setCount] = useState(0)
+  const { t, i18n } = useTranslation('common')
+  const toggle = () => i18n.changeLanguage(i18n.resolvedLanguage?.startsWith('en') ? 'pt-BR' : 'en')
 
   return (
     <>
+    <Suspense fallback="Carregando traducoes...">
       <h1 className="text-3xl font-bold underline">
-        Hello world!
+        { t('title', { name: 'Maicon '})}
       </h1>
+      <button onClick={toggle}>{t('switch')}</button>
+    </Suspense>
+      
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
