@@ -1,45 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { useTranslation } from 'react-i18next'
-import { Suspense } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Menu from './components/Menu';
+import PageWrapper from './components/PageWrapper';
+import { lazy, Suspense } from 'react';
+import HomeLoader from './pages/HomeLoader';
+
+const Home = lazy(() => import('./pages/Home'));
+const Search = lazy(() => import('./pages/Search'));
+
 
 function App() {
-  const [count, setCount] = useState(0)
-  const { t, i18n } = useTranslation('common')
-  const toggle = () => i18n.changeLanguage(i18n.resolvedLanguage?.startsWith('en') ? 'pt-BR' : 'en')
-
   return (
-    <>
-    <Suspense fallback="Carregando traducoes...">
-      <h1 className="text-3xl font-bold underline">
-        { t('title', { name: 'Maicon '})}
-      </h1>
-      <button onClick={toggle}>{t('switch')}</button>
-    </Suspense>
-      
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="flex min-h-screen">
+        <div className="w-1/8 bg-black text-white p-4">
+          <Menu />
+        </div>
+        <div className="w-7/8 bg-neutral-900 text-white p-6">
+          <PageWrapper>
+            <Suspense fallback={<HomeLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/search" element={<Search />} />
+              </Routes>
+            </Suspense>
+          </PageWrapper>
+        </div>
       </div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
-
-export default App
+export default App;
