@@ -3,6 +3,7 @@ import Menu from './components/Menu';
 import PageWrapper from './components/PageWrapper';
 import { lazy, Suspense } from 'react';
 import HomeLoader from './pages/HomeLoader';
+import Header from './components/Header';
 
 const Home = lazy(() => import('./pages/Home'));
 const Search = lazy(() => import('./pages/Search'));
@@ -11,6 +12,7 @@ const Search = lazy(() => import('./pages/Search'));
 function App() {
   return (
     <Router>
+      <Header />
       <div className="flex flex-col lg:flex-row min-h-screen">
         <div className="lg:w-1/8 w-full bg-black text-white p-4 lg:h-auto h-20 fixed bottom-0 lg:static flex flex-row lg:flex-col items-center">
           <Menu />
