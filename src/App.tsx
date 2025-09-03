@@ -11,11 +11,11 @@ const Search = lazy(() => import('./pages/Search'));
 function App() {
   return (
     <Router>
-      <div className="flex min-h-screen">
-        <div className="w-1/8 bg-black text-white p-4">
+      <div className="flex flex-col lg:flex-row min-h-screen">
+        <div className="lg:w-1/8 w-full bg-black text-white p-4 lg:h-auto h-20 fixed bottom-0 lg:static flex flex-row lg:flex-col items-center">
           <Menu />
         </div>
-        <div className="w-7/8 bg-neutral-900 text-white p-6">
+        <div className="lg:w-7/8 bg-neutral-900 text-white p-6 min-h-screen pb-20 lg:pb-0">
           <PageWrapper>
             <Suspense fallback={<HomeLoader />}>
               <Routes>
