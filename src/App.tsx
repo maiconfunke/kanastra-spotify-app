@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 import HomeLoader from './pages/HomeLoader';
 import Header from './components/Header';
 import { routes } from './routes/routes';
-import type { RouteType } from './types/route';
+import type { RouteProps } from './types/route';
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
           <PageWrapper>
             <Suspense fallback={<HomeLoader />}>
               <Routes>
-                {routes.map((route: RouteType) => {
+                {routes.map((route: RouteProps) => {
                   const { path, component: ReactComponent } = route;
                   return <Route key={path} path={path} element={<ReactComponent />} />;
                 })}

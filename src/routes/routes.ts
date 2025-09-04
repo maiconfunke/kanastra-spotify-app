@@ -1,8 +1,8 @@
 import { Home, Search } from 'lucide-react';
-import type { RouteType } from '../types/route';
+import type { RouteProps } from '../types/route';
 import { lazy } from 'react';
 
-export const routes: RouteType[] = [
+export const routes: RouteProps[] = [
   {
     path: '/',
     component: lazy(() => import('../pages/Home')),
