@@ -1,38 +1,47 @@
-import { Home, Search, LogIn, User } from 'lucide-react';
-import type { RouteProps } from '../types/route';
-import { lazy } from 'react';
+import { Home, Search, LogIn, User } from "lucide-react";
+import type { RouteProps } from "../types/route";
+import { lazy } from "react";
 
 export const routes: RouteProps[] = [
   {
-    path: '/',
-    component: lazy(() => import('../pages/Home')),
+    path: "/",
+    component: lazy(() => import("../pages/Home")),
     meta: {
-      label: 'Home',
+      label: "Home",
       icon: Home,
       showInMenu: true,
     },
   },
   {
-    path: '/search',
-    component: lazy(() => import('../pages/Search')),
+    path: "/search",
+    component: lazy(() => import("../pages/Search")),
     meta: {
-      label: 'Buscar',
+      label: "Buscar",
       icon: Search,
       showInMenu: true,
     },
   },
   {
-    path: '/callback',
-    component: lazy(() => import('../pages/SpotifyCallback.tsx')),
+    path: "/callback",
+    component: lazy(() => import("../pages/SpotifyCallback.tsx")),
     meta: {
       showInMenu: false,
     },
   },
-    {
-    path: '/profile',
-    component: lazy(() => import('../pages/Profile')),
+  {
+    path: "/profile",
+    component: lazy(() => import("../pages/Profile")),
     meta: {
-      label: 'Profile',
+      label: "Profile",
+      icon: User,
+      showInMenu: true,
+    },
+  },
+  {
+    path: "/teste",
+    component: lazy(() => import("../pages/Teste")),
+    meta: {
+      label: "Teste",
       icon: User,
       showInMenu: true,
     },
