@@ -1,4 +1,5 @@
 import { generateCodeChallenge, generateCodeVerifier } from "./pkce";
+import { getAccessTokenPublicApi } from "./public-api-token";
 
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID as string;
 console.log(CLIENT_ID)
@@ -150,26 +151,8 @@ export async function getMyProfile() {
   return res.json();
 }
 
-
-export async function getAccessToken() {
-  const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-  const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
-
-  const res = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: 'Basic ' + btoa(`${client_id}:${client_secret}`),
-    },
-    body: 'grant_type=client_credentials',
-  });
-
-  const data = await res.json();
-  return data.access_token;
-}
-
 export async function getFeaturedArtists() {
-  const token = await getAccessToken();
+  const token = await getAccessTokenPublicApi();
 
   const res = await fetch(
     'https://api.spotify.com/v1/search?q=rock&type=artist&limit=8',
