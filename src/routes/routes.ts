@@ -28,15 +28,6 @@ export const routes: RouteProps[] = [
       showInMenu: false,
     },
   },
-  {
-    path: '/login',
-    component: lazy(() => import('../pages/Login')),
-    meta: {
-      label: 'Login',
-      icon: LogIn,
-      showInMenu: true,
-    },
-  },
     {
     path: '/profile',
     component: lazy(() => import('../pages/Profile')),

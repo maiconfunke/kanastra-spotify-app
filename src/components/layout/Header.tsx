@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import logoDesktop from '../../assets/images/spotify-logo-desktop.svg';
 import logoMobile from '../../assets/images/spotify-logo-mobile.svg';
 import { useDebounce } from 'use-debounce';
+import { startLogin } from '../../auth/spotify';
 
 export default function Header() {
 
@@ -33,7 +34,7 @@ export default function Header() {
             </div>
 
             <div>
-                <button className='bg-white hover:bg-green-600 text-black font-semibold px-4 py-2 rounded-full'>
+                <button onClick={() => startLogin()} className='bg-white hover:bg-green-600 text-black font-semibold px-4 py-2 rounded-full'>
                     Login
                 </button>
             </div>
