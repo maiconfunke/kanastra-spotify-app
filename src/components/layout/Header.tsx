@@ -1,7 +1,21 @@
+import { useEffect, useState } from 'react';
 import logoDesktop from '../../assets/images/spotify-logo-desktop.svg';
 import logoMobile from '../../assets/images/spotify-logo-mobile.svg';
+import { useDebounce } from 'use-debounce';
 
 export default function Header() {
+
+    const [inputValue, setInputValue] = useState('');
+    const [debouncedValue] = useDebounce(inputValue, 500); // 500ms debounce
+
+    useEffect(() => {
+        if (debouncedValue.trim()) {
+            console.log('Texto buscado:', debouncedValue);
+        }
+    }, [debouncedValue]);
+
+
+
     return (
         <header className='fixed top-0 w-full bg-black text-white px-6 py-4 flex items-center justify-between border-b border-neutral-700 gap-x-2'>
             <div className='flex items-center flex-shrink-0'>
@@ -13,6 +27,7 @@ export default function Header() {
                 <input
                     type='text'
                     placeholder='O que você quer ouvir?'
+                    onChange={(e) => setInputValue(e.target.value)}
                     className='w-full max-w-md md:max-w-lg lg:max-w-lg rounded-full px-4 py-2 bg-neutral-800 text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-white'
                 />
             </div>

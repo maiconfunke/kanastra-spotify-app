@@ -4,8 +4,8 @@ export type RouteProps = {
   path: string;
   component: ComponentType;
   meta: {
-    label: string;
-    icon: ComponentType<{ className?: string }>;
+    label?: string;
+    icon?: ComponentType<{ className?: string }>;
     showInMenu: boolean;
   };
 };

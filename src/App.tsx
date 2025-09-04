@@ -1,11 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router  } from 'react-router-dom';
 import Menu from './components/layout/Menu';
 import PageWrapper from './components/layout/PageWrapper';
-import { Suspense } from 'react';
-import HomeLoader from './pages/HomeLoader';
 import Header from './components/layout/Header';
-import { routes } from './routes/routes';
-import type { RouteProps } from './types/route';
+import AppRouter from './routes/Router';
 
 
 function App() {
@@ -18,14 +15,7 @@ function App() {
         </div>
         <div className='flex-grow bg-neutral-900 text-white p-6 min-h-screen pb-20 lg:pb-0'>
           <PageWrapper>
-            <Suspense fallback={<HomeLoader />}>
-              <Routes>
-                {routes.map((route: RouteProps) => {
-                  const { path, component: ReactComponent } = route;
-                  return <Route key={path} path={path} element={<ReactComponent />} />;
-                })}
-              </Routes>
-            </Suspense>
+           <AppRouter />
           </PageWrapper>
         </div>
       </div>
