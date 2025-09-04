@@ -1,5 +1,5 @@
-import logoDesktop from '../assets/images/spotify-logo-desktop.svg';
-import logoMobile from '../assets/images/spotify-logo-mobile.svg';
+import logoDesktop from '../../assets/images/spotify-logo-desktop.svg';
+import logoMobile from '../../assets/images/spotify-logo-mobile.svg';
 
 export default function Header() {
     return (

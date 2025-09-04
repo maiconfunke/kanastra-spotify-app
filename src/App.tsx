@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Menu from './components/Menu';
-import PageWrapper from './components/PageWrapper';
+import Menu from './components/layout/Menu';
+import PageWrapper from './components/layout/PageWrapper';
 import { Suspense } from 'react';
 import HomeLoader from './pages/HomeLoader';
-import Header from './components/Header';
+import Header from './components/layout/Header';
 import { routes } from './routes/routes';
 import type { RouteProps } from './types/route';
 
