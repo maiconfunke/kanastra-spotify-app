@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { routes } from '../../routes/routes';
+import MenuButton from '../ui/MenuButton';
 
 export default function Menu() {
 
@@ -13,14 +13,8 @@ export default function Menu() {
 
   return (
     <div className='bg-black text-white h-full w-full px-6 flex flex-row lg:flex-col gap-y-8 pt-10 font-bold'>
-      {menuItems.map(({ label, path, icon: Icon }) => (
-        <Link
-          to={path}
-          className='flex items-center space-x-4 text-white hover:text-green-400 cursor-pointer'
-        >
-          <Icon className='w-7 h-7' />
-          <span className='text-sm'>{label}</span>
-        </Link>
+      {menuItems.map(({ label, path, icon }) => (
+        <MenuButton key={path} path={path} label={label} icon={icon} />
       ))}
     </div>
   );
