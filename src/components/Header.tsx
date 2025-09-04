@@ -9,7 +9,7 @@ export default function Header() {
                 <img src={logoDesktop} alt='Spotify Logo' className='absolute   top-4 left-6 inset-0 transition-opacity duration-500 ease-in-out opacity-0 lg:opacity-100' />
             </div>
 
-            <div className='flex-grow px-6 flex justify-center ml-6'>
+            <div className='flex-grow px-6 flex justify-center ml-10'>
                 <input
                     type='text'
                     placeholder='O que você quer ouvir?'
