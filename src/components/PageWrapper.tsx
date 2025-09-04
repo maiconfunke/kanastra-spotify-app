@@ -1,4 +1,3 @@
-// src/components/PageWrapper.tsx
 type PageWrapperProps = {
   children: React.ReactNode;
 };

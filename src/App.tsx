@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Header />
       <div className="flex flex-col lg:flex-row min-h-screen mt-18">
-        <div className="w-full lg:w-48 bg-black text-white p-4 lg:h-auto h-20 fixed bottom-0 lg:static flex flex-row lg:flex-col items-center">
+        <div className="w-full lg:w-64 lg:h-auto h-20 fixed bottom-0 lg:static">
           <Menu />
         </div>
         <div className="flex-grow bg-neutral-900 text-white p-6 min-h-screen pb-20 lg:pb-0">

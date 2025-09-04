@@ -5,8 +5,8 @@ export default function Header() {
     return (
         <header className="fixed top-0 w-full bg-black text-white px-6 py-4 flex items-center justify-between border-b border-neutral-700 gap-x-2">
             <div className="flex items-center flex-shrink-0">
-                <img src={logoMobile} alt="Spotify Logo" className="absolute  top-4 left-4 inset-0 h-10 w-10 transition-opacity duration-500 ease-in-out lg:opacity-0" />
-                <img src={logoDesktop} alt="Spotify Logo" className="absolute   top-4 left-4 inset-0 transition-opacity duration-500 ease-in-out opacity-0 lg:opacity-100" />
+                <img src={logoMobile} alt="Spotify Logo" className="absolute  top-4 left-6 inset-0 h-10 w-10 transition-opacity duration-500 ease-in-out lg:opacity-0" />
+                <img src={logoDesktop} alt="Spotify Logo" className="absolute   top-4 left-6 inset-0 transition-opacity duration-500 ease-in-out opacity-0 lg:opacity-100" />
             </div>
 
             <div className="flex-grow px-6 flex justify-center ml-6">
@@ -23,6 +23,5 @@ export default function Header() {
                 </button>
             </div>
         </header>
-
     );
 }
