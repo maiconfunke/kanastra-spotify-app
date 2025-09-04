@@ -1,28 +1,29 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import PageWrapper from './components/PageWrapper';
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import HomeLoader from './pages/HomeLoader';
 import Header from './components/Header';
-
-const Home = lazy(() => import('./pages/Home'));
-const Search = lazy(() => import('./pages/Search'));
+import { routes } from './routes/routes';
+import type { RouteType } from './types/route';
 
 
 function App() {
   return (
     <Router>
       <Header />
-      <div className="flex flex-col lg:flex-row min-h-screen mt-18">
-        <div className="w-full lg:w-64 lg:h-auto h-20 fixed bottom-0 lg:static">
+      <div className='flex flex-col lg:flex-row min-h-screen mt-18'>
+        <div className='w-full lg:w-64 lg:h-auto h-20 fixed bottom-0 lg:static'>
           <Menu />
         </div>
-        <div className="flex-grow bg-neutral-900 text-white p-6 min-h-screen pb-20 lg:pb-0">
+        <div className='flex-grow bg-neutral-900 text-white p-6 min-h-screen pb-20 lg:pb-0'>
           <PageWrapper>
             <Suspense fallback={<HomeLoader />}>
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/search" element={<Search />} />
+                {routes.map((route: RouteType) => {
+                  const { path, component: ReactComponent } = route;
+                  return <Route key={path} path={path} element={<ReactComponent />} />;
+                })}
               </Routes>
             </Suspense>
           </PageWrapper>
