@@ -2,7 +2,7 @@ import { generateCodeChallenge, generateCodeVerifier } from "./pkce";
 import { getAccessTokenPublicApi } from "./public-api-token";
 
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID as string;
-console.log(CLIENT_ID)
+
 const REDIRECT_URI =
   (import.meta.env.VITE_SPOTIFY_REDIRECT_URI as string) ||
   `${window.location.origin}/callback`;
@@ -19,10 +19,10 @@ const STORAGE = {
 type TokenPayload = {
   access_token: string;
   token_type: "Bearer";
-  expires_in: number; // segundos
+  expires_in: number;
   refresh_token?: string;
   scope?: string;
-  obtained_at: number; // epoch ms
+  obtained_at: number;
 };
 
 function saveToken(token: TokenPayload) {
@@ -42,7 +42,6 @@ function isExpired(token: TokenPayload, skewSec = 30) {
   return ageSec >= token.expires_in - skewSec;
 }
 
-// 1) Iniciar login: gera PKCE e redireciona
 export async function startLogin() {
   const verifier = generateCodeVerifier();
   localStorage.setItem(STORAGE.verifier, verifier);
@@ -60,7 +59,6 @@ export async function startLogin() {
     "https://accounts.spotify.com/authorize?" + params.toString();
 }
 
-// 2) Trocar "code" por access_token (no /callback)
 export async function finishLogin(authCode: string) {
   const verifier = localStorage.getItem(STORAGE.verifier);
   if (!verifier) throw new Error("Code verifier ausente (fluxo PKCE).");
@@ -96,7 +94,6 @@ export async function finishLogin(authCode: string) {
   return token;
 }
 
-// 3) Refresh token
 export async function refreshToken() {
   const current = readToken();
   if (!current?.refresh_token) throw new Error("Sem refresh_token salvo.");
@@ -126,7 +123,6 @@ export async function refreshToken() {
   return next;
 }
 
-// 4) Obter token válido (faz refresh se necessário)
 export async function getValidAccessToken() {
   let token = readToken();
   if (!token) return null;
@@ -134,13 +130,11 @@ export async function getValidAccessToken() {
   return token.access_token;
 }
 
-// 5) Logout
 export function logout() {
   localStorage.removeItem(STORAGE.token);
   localStorage.removeItem(STORAGE.verifier);
 }
 
-// 6) Exemplo de chamada autenticada
 export async function getMyProfile() {
   const access = await getValidAccessToken();
   if (!access) throw new Error("Não autenticado.");

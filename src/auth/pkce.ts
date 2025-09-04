@@ -1,4 +1,3 @@
-// pkce.ts
 export function generateCodeVerifier(): string {
   const array = new Uint8Array(64);
   crypto.getRandomValues(array);
