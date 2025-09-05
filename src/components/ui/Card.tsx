@@ -1,24 +1,26 @@
 import { Play } from 'lucide-react';
 
-type SpotifyCardProps = {
+type CardProps = {
   coverUrl: string;
   title: string;
-  subtitle: string; // Ex.: "Grupo Menos É Mais, NATTAN"
+  shape?: string;
+  subtitle: string;
   onClick?: () => void;
 };
 
-export function SpotifyCard({ coverUrl, title, subtitle, onClick }: SpotifyCardProps) {
+export function Card({ coverUrl, title, subtitle, shape, onClick }: CardProps) {
   return (
     <div className='hover:bg-neutral-800 rounded-lg shadow p-4 text-white cursor-pointer group'>
       <div className="relative">
         <img
           src={coverUrl}
           alt={title}
-          className="
-        aspect-square w-full rounded-full object-cover
-        shadow-md
-      "
-        />
+          className={`
+    aspect-square w-full object-cover shadow-md
+    ${shape === 'circle' ? 'rounded-full' : 'rounded-lg'}
+  `}
+          
+          />
         
         <button
           className="
@@ -31,8 +33,8 @@ export function SpotifyCard({ coverUrl, title, subtitle, onClick }: SpotifyCardP
         </button>
       </div>
 
-      <h3 className='text-lg mt-2'>Creed</h3>
-      <p className='text-neutral-400'>Artista</p>
+      <h3 className='text-lg mt-2'>{title}</h3>
+      <p className='text-neutral-400'>{subtitle}</p>
     </div>
   );
 }

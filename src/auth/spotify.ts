@@ -149,7 +149,7 @@ export async function getFeaturedArtists() {
   const token = await getAccessTokenPublicApi();
 
   const res = await fetch(
-    'https://api.spotify.com/v1/search?q=rock&type=artist&limit=8',
+    'https://api.spotify.com/v1/search?q=sertanejo&type=artist&limit=5',
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -158,5 +158,6 @@ export async function getFeaturedArtists() {
   );
 
   const data = await res.json();
+  console.log('getFeaturedArtists', data.artists.items)
   return data.artists.items;
 }
