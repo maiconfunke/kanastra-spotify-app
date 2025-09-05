@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { routes } from '../routes/routes';
-import type { RouteProps } from '../types/route';
+import type { RouteProps } from '../types';
 import HomeLoader from '../pages/HomeLoader';
 
 export default function AppRouter() {

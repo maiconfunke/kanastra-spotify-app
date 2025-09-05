@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react';
 
-export type RouteProps = {
+export interface RouteProps {
   path: string;
   component: ComponentType;
   meta: {

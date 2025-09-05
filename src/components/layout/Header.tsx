@@ -7,7 +7,7 @@ import { startLogin } from '../../auth/spotify';
 export default function Header() {
 
     const [inputValue, setInputValue] = useState('');
-    const [debouncedValue] = useDebounce(inputValue, 500); // 500ms debounce
+    const [debouncedValue] = useDebounce(inputValue, 500);
 
     useEffect(() => {
         if (debouncedValue.trim()) {

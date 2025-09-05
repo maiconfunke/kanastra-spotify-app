@@ -1,27 +1,19 @@
-import { Play } from 'lucide-react';
+import { Play } from "lucide-react";
+import type { Card } from "../../types";
 
-type CardProps = {
-  coverUrl: string;
-  title: string;
-  shape?: string;
-  subtitle: string;
-  onClick?: () => void;
-};
-
-export function Card({ coverUrl, title, subtitle, shape, onClick }: CardProps) {
+export function Card({ coverUrl, title, subtitle, shape, onClick }: Card) {
   return (
-    <div className='hover:bg-neutral-800 rounded-lg shadow p-4 text-white cursor-pointer group'>
+    <div className="hover:bg-neutral-800 rounded-lg shadow p-4 text-white cursor-pointer group">
       <div className="relative">
         <img
           src={coverUrl}
           alt={title}
           className={`
     aspect-square w-full object-cover shadow-md
-    ${shape === 'circle' ? 'rounded-full' : 'rounded-lg'}
+    ${shape === "circle" ? "rounded-full" : "rounded-lg"}
   `}
-          
-          />
-        
+        />
+
         <button
           className="
         absolute bottom-2 right-2 bg-green-500 text-white p-4 rounded-full
@@ -33,8 +25,8 @@ export function Card({ coverUrl, title, subtitle, shape, onClick }: CardProps) {
         </button>
       </div>
 
-      <h3 className='text-lg mt-2'>{title}</h3>
-      <p className='text-neutral-400'>{subtitle}</p>
+      <h3 className="text-lg mt-2">{title}</h3>
+      <p className="text-neutral-400">{subtitle}</p>
     </div>
   );
 }

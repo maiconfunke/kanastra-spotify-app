@@ -1,17 +1,8 @@
 import { Home, Search, User } from "lucide-react";
-import type { RouteProps } from "../types/route";
+import type { RouteProps } from "../types";
 import { lazy } from "react";
 
 export const routes: RouteProps[] = [
-  {
-    path: "/principal",
-    component: lazy(() => import("../pages/Principal")),
-    meta: {
-      label: "Principal",
-      icon: Home,
-      showInMenu: true,
-    },
-  },
   {
     path: "/",
     component: lazy(() => import("../pages/Home")),
@@ -45,14 +36,5 @@ export const routes: RouteProps[] = [
       icon: User,
       showInMenu: true,
     },
-  },
-  {
-    path: "/teste",
-    component: lazy(() => import("../pages/Teste")),
-    meta: {
-      label: "Teste",
-      icon: User,
-      showInMenu: true,
-    },
-  },
+  }
 ];

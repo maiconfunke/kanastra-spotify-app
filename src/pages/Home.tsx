@@ -1,22 +1,11 @@
 import { Card } from "../components/ui/Card";
-import { useArtists, useTrendingMusics } from "../hooks/useArtists";
-
-interface SpotifyArtist {
-  id: string;
-  name: string;
-  images: { url: string }[];
-  genres: string[];
-}
-
-interface SpotifyTrack {
-  artist: string;
-  name: string;
-  preview: string;
-}
+import { useArtists } from "../hooks/useArtists";
+import { usePlaylistsTracks } from "../hooks/usePlaylists";
+import type { SpotifyArtist, SpotifyTrack } from "../types";
 
 export default function Home() {
-  const { data: artists = [] } = useArtists('sertanejo', 8);
-  const { data: tracks = [] } = useTrendingMusics('5bKoH0s8rTnFLanGOKCgI8', 8);
+  const { data: artists = [] } = useArtists('sertanejo', 10);
+  const { data: tracks = [] } = usePlaylistsTracks('5bKoH0s8rTnFLanGOKCgI8', 10);
 
   return (
     <div className='w-full'>
